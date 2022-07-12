@@ -19,8 +19,13 @@ public class StartScene : MonoBehaviour
     public void sceneRacing()
     {
         SceneManager.LoadScene(1);
-    }public void sceneObstacle()
+    }
+    public void sceneObstacle()
     {
         SceneManager.LoadScene(2);
+    }
+    public void sceneRocket()
+    {
+        SceneManager.LoadScene(4);
     }
 }

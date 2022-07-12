@@ -68,5 +68,8 @@ public class Movement : MonoBehaviour
     public void die()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }public void backMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
