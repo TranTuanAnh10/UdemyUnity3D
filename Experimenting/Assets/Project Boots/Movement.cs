@@ -8,7 +8,13 @@ public class Movement : MonoBehaviour
     [SerializeField] float mainThrust = 850f;
     [SerializeField] float rotationThrust = 120f;
     [SerializeField] GameObject btnReset;
+    [SerializeField] ParticleSystem rocketJet;
+    [SerializeField] ParticleSystem rocketJetLeft;
+    [SerializeField] ParticleSystem rocketJetRight;
+    [SerializeField] ParticleSystem explosion;
+    [SerializeField] ParticleSystem success;
     bool isDie = false;
+    bool isMove = true;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -20,15 +26,23 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessInput();
-        ProcessRotation();
+        if (isMove)
+        {
+            ProcessInput();
+            ProcessRotation();
+        }
     }
     void ProcessInput()
     {
-        
+
         if (Input.GetKey(KeyCode.Space))
         {
             rb.AddRelativeForce(Vector3.up * Time.deltaTime * mainThrust);
+            rocketJet.Play();
+        }
+        else
+        {
+            rocketJet.Stop();
         }
     }
     void ProcessRotation()
@@ -36,10 +50,17 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             ApplyRotation(rotationThrust);
+            rocketJetRight.Play();
         }
         else if (Input.GetKey(KeyCode.D))
         {
             ApplyRotation(-rotationThrust);
+            rocketJetLeft.Play();
+        }
+        else
+        {
+            rocketJetLeft.Stop();
+            rocketJetRight.Stop();
         }
     }
     void ApplyRotation(float rotationThisFrame)
@@ -52,13 +73,16 @@ public class Movement : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ground" && isDie == false)
         {
-            die();
+            isMove = false;
+            Invoke("die", 1f);
             Debug.Log("die");
+            explosion.Play();
         }
         if (collision.gameObject.tag == "End")
         {
             isDie = true;
             Debug.Log("win");
+            explosion.Play();
             if (btnReset.activeSelf == false)
             {
                 btnReset.SetActive(true);
@@ -68,7 +92,8 @@ public class Movement : MonoBehaviour
     public void die()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }public void backMenu()
+    }
+    public void backMenu()
     {
         SceneManager.LoadScene(0);
     }
