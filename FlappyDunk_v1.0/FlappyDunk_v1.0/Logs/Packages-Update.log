@@ -1,0 +1,24 @@
+
+=== Mon Jul 11 15:06:37 2022
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.2d.animation from version 3.2.6 to 3.2.14
+  com.unity.2d.psdimporter from version 2.1.6 to 2.1.10
+  com.unity.2d.spriteshape from version 3.0.15 to 3.0.18
+  com.unity.collab-proxy from version 1.2.16 to 1.14.9
+  com.unity.ide.visualstudio from version 2.0.8 to 2.0.12
+  com.unity.ide.vscode from version 1.2.3 to 1.2.4
+  com.unity.test-framework from version 1.1.24 to 1.1.29
+
+=== Mon Jul 25 09:49:26 2022
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.collab-proxy from version 1.14.9 to 1.14.12
+  com.unity.ide.visualstudio from version 2.0.12 to 2.0.14
+  com.unity.test-framework from version 1.1.29 to 1.1.30
